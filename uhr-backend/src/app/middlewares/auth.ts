@@ -42,6 +42,11 @@ const auth = (...requiredRoles: string[]) => {
         throw new AppError(httpStatus.NOT_FOUND, "This user is not found!");
       }
 
+      // Check if user is active
+      if (!user.isActive) {
+        throw new AppError(httpStatus.FORBIDDEN, "This account is inactive!");
+      }
+
       // 4. Check if user is banned
       if (user.isBanned) {
         throw new AppError(httpStatus.FORBIDDEN, "This user is banned!");

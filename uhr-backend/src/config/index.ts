@@ -15,6 +15,7 @@ const requiredEnvVars = [
   "REFRESH_TOKEN_EXPIRES_IN",
   "RESET_PASS_TOKEN_SECRET",
   "RESET_PASS_TOKEN_EXPIRES_IN",
+  "BCRYPT_SALT_ROUNDS",
 ];
 
 // 3️⃣ Validate that all required variables exist
@@ -45,6 +46,9 @@ const config = {
     resetSecret: process.env.RESET_PASS_TOKEN_SECRET as string,
     resetExpiresIn: process.env.RESET_PASS_TOKEN_EXPIRES_IN as string,
   },
+
+  // Password
+  bcryptSaltRounds: Number(process.env.BCRYPT_SALT_ROUNDS),
 };
 
 export default config;
